@@ -1,28 +1,31 @@
 import express from "express";
 import cors from 'cors';
+import path from 'path'; // Importar para manejo de archivos
 
 import customerRoutes from "./routes/customer.routes.js";
 import filmRoutes from "./routes/film.routes.js";
 import movieTheaterRoutes from "./routes/movieTheare.routes.js";
 import ticketRoutes from "./routes/ticket.routes.js";
-import seatsRoutes from "./routes/seats.routes.js"
-import mercadoPagoRoutes from "./mercadoPago.js"
+import seatsRoutes from "./routes/seats.routes.js";
+import mercadoPagoRoutes from "./mercadoPago.js";
 
 // crear usuario admin
-import {createAdmin}  from "../src/createUser/createAdmin.js"
+import { createAdmin } from "../src/createUser/createAdmin.js";
 
 const app = express();
 
 // Configuración de CORS
 app.use(cors({
-    // cambiar el origin que quede asi =>  process.env.FRONTEND_URL || 'http://localhost:3000
     origin: process.env.FRONTEND_URL || 'http://localhost:3000',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+// Ignorar solicitud de favicon
+app.get('/favicon.ico', (req, res) => res.status(204).end());
 
-
+// Servir archivos estáticos (si decides agregar un favicon)
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json());
 
