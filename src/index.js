@@ -1,6 +1,8 @@
 import express from "express";
 import cors from 'cors';
 import path from 'path'; // Importar para manejo de archivos
+import { fileURLToPath } from 'url'; // Para obtener __dirname
+import { dirname } from 'path'; // Para obtener __dirname
 
 import customerRoutes from "./routes/customer.routes.js";
 import filmRoutes from "./routes/film.routes.js";
@@ -11,6 +13,10 @@ import mercadoPagoRoutes from "./mercadoPago.js";
 
 // crear usuario admin
 import { createAdmin } from "../src/createUser/createAdmin.js";
+
+// Definir __dirname en ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 
