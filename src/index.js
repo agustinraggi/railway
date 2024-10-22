@@ -16,7 +16,7 @@ const app = express();
 // Configuración de CORS
 app.use(cors({
     // cambiar el origin que quede asi =>  process.env.FRONTEND_URL || 'http://localhost:3000
-    origin: 'https://cineaurora.netlify.app/login',
+    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
