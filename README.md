@@ -14,6 +14,8 @@ contraseña: admin123
 
 para subir la pagina usamos
 https://render.com/
+<!-- agregar despues al json -->
+npx prisma migrate reset --force && npm install && 
 
 
 integrantes del grupo:
